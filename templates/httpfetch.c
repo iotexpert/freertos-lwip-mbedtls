@@ -10,6 +10,9 @@
 #include <task.h>
 #include <stdio.h>
 
+#define WIFI_SSID   "BulldogGuest"
+#define WIFI_KEY    "DiamondDawgs"
+
 /* The primary WIFI driver interface */
 static whd_interface_t iface ;
 
@@ -199,8 +202,8 @@ void vApplicationDaemonTaskStartupHook()
 {
     cy_rslt_t res ;
     whd_ssid_t ssiddata ;
-    const char *ssid = "TheInternetsG" ;
-    const char *key = "expee41c" ;
+    const char *ssid = WIFI_SSID ;
+    const char *key = WIFI_KEY ;
 
     //
     // Step 1: bring up the LWiP TCP stack
