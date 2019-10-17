@@ -57,7 +57,7 @@
 #define configTOTAL_HEAP_SIZE						( ( size_t ) ( CY_SRAM_SIZE - 64 * 1024))
 #define configUSE_RTOS_HEAP                                           1
 
-#define configUSE_DAEMON_TASK_STARTUP_HOOK			1
+#define configUSE_DAEMON_TASK_STARTUP_HOOK			0
 #define configUSE_PREEMPTION						1
 #define configUSE_IDLE_HOOK							1
 #define configUSE_TICK_HOOK							1
