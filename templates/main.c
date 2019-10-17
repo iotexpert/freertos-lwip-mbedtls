@@ -10,8 +10,8 @@
 #include <task.h>
 #include <stdio.h>
 
-#define WIFI_SSID   "BulldogGuest"
-#define WIFI_KEY    "DiamondDawgs"
+#define WIFI_SSID   "CYFI_IOT_EXT"
+#define WIFI_KEY    "cypresswicedwifi101"
 
 /* The primary WIFI driver interface */
 static whd_interface_t iface ;
