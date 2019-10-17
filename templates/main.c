@@ -13,6 +13,10 @@
 #define WIFI_SSID   "CYFI_IOT_EXT"
 #define WIFI_KEY    "cypresswicedwifi101"
 
+static const char *request = "GET /get HTTP/1.1\r\nHost: httpbin.org\r\nConnection: close\r\n\r\n" ;
+//static const char *request = "GET / HTTP/1.1\r\n\r\n" ;
+
+
 /* The primary WIFI driver interface */
 static whd_interface_t iface ;
 
@@ -45,14 +49,14 @@ static void blinky(void *args)
 
 
 
-static const char *request = "GET / HTTP/1.1\r\nHost: www.iotlibs.com\r\nConnection: close\r\n\r\n" ;
-static int received = 0 ;
-static int packets = 0 ;
 
 static void networkTask(void *arg)
 {
     cy_rslt_t res ;
     whd_ssid_t ssiddata ;
+    int received = 0 ;
+    int packets = 0 ;
+
     const char *ssid = WIFI_SSID ;
     const char *key = WIFI_KEY ;
 
@@ -73,7 +77,7 @@ static void networkTask(void *arg)
 
     addInterfaceToLwip(iface, NULL) ;
    
-    printf("WiFi interface added to TCP/IP stack\n") ;
+    printf("WiFi interface added to TCP/IP stack\nRunning dns lookup\n") ;
     
     struct netif *net = getLWIPInterface() ;    
 
@@ -84,7 +88,7 @@ static void networkTask(void *arg)
             printf("IP Address %s assigned\n", ip4addr_ntoa(&net->ip_addr.u_addr.ip4)) ;
             break ;
         }
-        vTaskDelay(1000) ;
+        vTaskDelay(100) ;
     }
 
     const char *site = (const char *)arg ;
@@ -153,7 +157,7 @@ int main()
 
     /* Create our original tasks */    
     xTaskCreate(blinky, "BLINKY", 128, NULL, 1, NULL) ;
-    xTaskCreate(networkTask, "Network", 256, "www.cypress.com", 1, NULL) ;
+    xTaskCreate(networkTask, "Network", 256, "httpbin.org", 1, NULL) ;
     /* Start the FreeRTOS scheduler */
     vTaskStartScheduler() ;   
 
