@@ -8,7 +8,7 @@ To use this do the following three steps
 2. Add the URL for this repo to the file "https://github.com/iotexpert/freertos-lwip-mbedtls/#master"
 3. run "make getlibs"
 
-# Functionality
+# Functionality & Libraries
 This library file will bring in the following libraries
 * lwip - Master branch from the LWIP github respository
 * lwip configuration - Configuration files required for LWIP
