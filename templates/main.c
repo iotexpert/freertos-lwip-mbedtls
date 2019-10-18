@@ -1,5 +1,6 @@
-#include <cyhal.h>
-#include <cybsp.h>
+
+#include "cyhal.h"
+#include "cybsp.h"
 #include <lwip/tcpip.h>
 #include <lwip/api.h>
 #include <cy_retarget_io.h>
@@ -14,10 +15,8 @@
 #define WIFI_KEY    "cypresswicedwifi101"
 
 static const char *request = "GET /get HTTP/1.1\r\nHost: httpbin.org\r\nConnection: close\r\n\r\n" ;
-//static const char *request = "GET / HTTP/1.1\r\n\r\n" ;
 
-
-/* The primary WIFI driver interface */
+/* The primary WIFI driver  */
 static whd_interface_t iface ;
 
 /* This enables RTOS aware debugging */
